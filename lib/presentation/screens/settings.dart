@@ -18,74 +18,97 @@ class _SettingsState extends State<Settings> {
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
 
 
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Settings"),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.arrow_back_ios, color: Colors.blue),
-            onPressed: () {
-            },
+     appBar: AppBar(
+    title: Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        IconButton(
+          onPressed: () {
+            // Add logic for the icon button
+          },
+          icon: Icon(Icons.arrow_back_ios, color: Colors.blue),
+        ),
+        Expanded(
+          child: Center(
+            child: Text("Settings"),
           ),
-        ],
-      ),
+        ),
+      ],
+    ),),
+    
+    
       body: Container(
-        padding: EdgeInsets.all(8.0),
+        padding: EdgeInsets.all(10.0),
+        margin: EdgeInsets.all(16),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             const SectionHeader(text: "Security Settings"),
             const SizedBox(height: 5),
 
-            ToggleButton(
-              text: "face id",
-              value: faceIdValue,
-              onChanged: (newValue) {
-                setState(() {
-                  faceIdValue = newValue;
-                });
-              },
-            ),
-            const SizedBox(height: 5),
-
-            ToggleButton(
-              text: "pin",
-              value: pinValue,
-              onChanged: (newValue) {
-                setState(() {
-                  pinValue = newValue;
-                });
-              },
-            ),
-            const SizedBox(height: 5),
-            CustomListItem(
-              label: "change pin",
-              onPressed: () {
-                // Add logic for changing password
-              },
-            ),
-            const SizedBox(height: 15),
+Container(
+  padding: EdgeInsets.all(10),
+decoration: BoxDecoration(
+                border:
+                    Border.all(color: Colors.black),
+                    borderRadius: BorderRadius.circular(10) // Adding a black border
+              ),
+  
+child: Column(
+  
+  children: [
+                ToggleButton(
+                    text: "face id",
+                    value: faceIdValue,
+                    onChanged: (newValue) {
+                      setState(() {
+                        faceIdValue = newValue;
+                      });
+                    },
+                  ),
+                  const SizedBox(height: 5),
+                  ToggleButton(
+                    text: "pin",
+                    value: pinValue,
+                    onChanged: (newValue) {
+                      setState(() {
+                        pinValue = newValue;
+                      });
+                    },
+                  ),
+                  const SizedBox(height: 5),
+                  CustomListItem(
+                    text: "",
+                    label: "change pin",
+                    onPressed: () {},
+                  ),
+  ],
+),
+)
+            ,const SizedBox(height: 15),
              CustomListItem(
-              label: "Change Password",
+              text: "password",
+              label: "change password",
               onPressed: () {
-                // Add logic for changing password
               },
             ),
              const SizedBox(height: 15),
             CustomListItem(
-              label: "Manage",
+              text: "Approved addresses",
+              label: "manage",
               onPressed: () {
                 
               },
             ),
              const SizedBox(height: 15),
             CustomListItem(
+              text: "Security Keys",
                 isLastItem: true,
-              label: "Add Security Keys",
+              label: "add Security Keys",
               onPressed: () {
               },
             

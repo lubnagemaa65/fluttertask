@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class ToggleButton extends StatelessWidget {
   final String text;
@@ -9,14 +10,18 @@ class ToggleButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Color activeColor = value ?   Colors.white: Colors.green;
+    Color activeTrackColor = value ? Colors.green : Colors.white;
+
     return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(text),
+        Expanded(child: Text(text)),
         Switch(
           value: value,
           onChanged: onChanged,
-          activeTrackColor: Colors.green,
-          activeColor: Colors.green,
+          activeTrackColor: activeTrackColor,
+          activeColor: activeColor,
           inactiveTrackColor: Colors.white,
         ),
       ],
